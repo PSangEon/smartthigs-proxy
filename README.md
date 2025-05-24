@@ -14,6 +14,12 @@ HTTP_PORT=Desired_Port (e.g. 3000)
 
 ✅ Run the server with the `node app.js` command. 
 
+✅ Follow the instructions to install the SmartSync CLI and create an APP
+
+https://developer.smartthings.com/docs/sdks/cli
+
+✅ Update the values in `.env` and restart the server
+
 ✅ Connect to `http://localhost:{port}/login` in your browser to start authenticating.
 
 ### 🔑 Key features
