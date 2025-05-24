@@ -4,6 +4,13 @@
 ✅ Install the required packages with `npm install`. 
 
 ✅ Set up your client ID, secret, redirect URI, scope, etc. in the `.env` file. 
+```
+CLIENT_ID=Client_ID
+CLIENT_SECRET=Client_Secret
+REDIRECT_URI=Callback_URL
+SCOPE=Request_Scope
+HTTP_PORT=Desired_Port (e.g. 3000)
+```
 
 ✅ Run the server with the `node app.js` command. 
 
