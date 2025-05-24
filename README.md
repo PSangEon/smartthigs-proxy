@@ -37,8 +37,6 @@ https://developer.smartthings.com/docs/sdks/cli
 
 🔑 **/callback**: Issues and stores access tokens with verification codes.
 
-🔄 **/refresh**: Issues a new access token using a stored refresh token.
-
 🔗 **/smartthings/***: Proxies SmartThings API requests.
 
 ---
