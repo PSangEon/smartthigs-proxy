@@ -5,12 +5,13 @@ require('dotenv').config();
 const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
 
+// Token renewal logic
 async function getValidAccessToken() {
   let token = JSON.parse(fs.readFileSync('token.json', 'utf-8'));
   const now = Math.floor(Date.now() / 1000);
 
   if (now >= token.expires_at) {
-    console.log('[🔄] 토큰 갱신 중...');
+    console.log('[🔄] Renewing token...');
     const res = await axios.post('https://api.smartthings.com/v1/oauth/token', null, {
       params: {
         grant_type: 'refresh_token',
