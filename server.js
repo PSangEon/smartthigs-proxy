@@ -59,7 +59,7 @@ app.get('/callback', async (req, res) => {
     res.status(500).send('Error during authentication');
   }
 });
-app.get('/refrash', async (req, res) => {
+app.get('/refresh', async (req, res) => {
   try {
     const token = await getValidAccessToken();
     res.json(token);
