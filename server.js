@@ -112,7 +112,3 @@ app.listen(HTTP_PORT, () => {
 https.createServer(sslOptions, app).listen(HTTPS_PORT, () => {
   console.log(`✅ HTTPS server running at https://localhost:${HTTPS_PORT}`);
 });
-
-app.listen(HTTP_PORT, () => {
-  console.log(`Server started at http://localhost:${HTTP_PORT}`);
-});
