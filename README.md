@@ -54,11 +54,11 @@ https://developer.smartthings.com/docs/sdks/cli
 📝 Get a list of SmartThings devices:
 
 ```
-GET https://your-domain:{PORT}/smartthings/devices
+GET http://your-domain:{PORT}/smartthings/devices
 ```
 
 📝 Get a list of SmartThings scenes:
 
 ```
-GET https://your-domain:{PORT}/smartthings/scenes
+GET http://your-domain:{PORT}/smartthings/scenes
 ```
