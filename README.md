@@ -11,8 +11,10 @@
 CLIENT_ID=Client_ID
 CLIENT_SECRET=Client_Secret
 REDIRECT_URI=https://your-domain:{PORT}/callback
+HASHED_API_KEY=Key values hashed with bcrypt
 SCOPE=Request_Scope
 HTTP_PORT=Desired_Port (e.g. 3000)
+HTTPS_PORT=Desired_Port (e.g. 3001)
 ```
 
 ✅ Run the server with the `node app.js` command.
