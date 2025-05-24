@@ -84,17 +84,6 @@ app.get('/callback', async (req, res) => {
     res.status(500).send('Error occurred during authentication');
   }
 });
-
-app.get('/refrash', async (req, res) => {
-  try {
-    const token = await getValidAccessToken();
-    res.json(token);
-  } catch (error) {
-    console.error('[Refresh Token Error]', error.response?.data || error.message);
-    res.status(500).send('Error occurred while refreshing token');
-  }
-});
-
 // 3. Proxy requests to SmartThings API (with authentication)
 app.all('/smartthings/*', authMiddleware, async (req, res) => {
   try {
