@@ -1,44 +1,64 @@
 ### 📌 INFO
 🔧 Simple OAuth2-based proxy server to access SmartThings APIs
-### 🚀 Quick Start
-✅ Install the required packages with `npm install`. 
 
-✅ Set up your client ID, secret, redirect URI, scope, etc. in the `.env` file. 
+### 🚀 Quick Start
+
+✅ Install the required packages with `npm install`.
+
+✅ Set up your client ID, secret, redirect URI, scope, etc. in the `.env` file.
+
 ```
 CLIENT_ID=Client_ID
 CLIENT_SECRET=Client_Secret
-REDIRECT_URI=Callback_URL
+REDIRECT_URI=https://your-domain:{PORT}/callback
 SCOPE=Request_Scope
 HTTP_PORT=Desired_Port (e.g. 3000)
 ```
 
-✅ Run the server with the `node app.js` command. 
+✅ Run the server with the `node app.js` command.
 
-✅ Follow the instructions to install the SmartSync CLI and create an APP
+✅ Verify that `https://your-domain:{PORT}/callback` is reachable.
+
+✅ Follow the instructions to install the SmartSync CLI and create an APP:
 
 https://developer.smartthings.com/docs/sdks/cli
 
-✅ Update the values in `.env` and restart the server
+✅ Update the values in `.env` and restart the server.
 
-✅ Connect to `http://localhost:{port}/login` in your browser to start authenticating.
+✅ Connect to `http://your-domain:{PORT}/login` in your browser to start authenticating.
 
-### 🔑 Key features
-🔒 **/login**: Redirect to the SmartThings login page
+---
 
-🔑 **/callback**: Issuing and storing access tokens with verification codes
+### 🔑 Key Features
 
-🔄 **/refrash**: Issuing a new access token with a stored refresh token
+🔒 **/login**: Redirects to the SmartThings login page.
 
-🔗 **/smartthings/***: Proxying SmartThings API requests
+🔑 **/callback**: Issues and stores access tokens with verification codes.
+
+🔄 **/refresh**: Issues a new access token using a stored refresh token.
+
+🔗 **/smartthings/***: Proxies SmartThings API requests.
+
+---
+
 ### ⚠️ Caveats
-⚙️ The issued token is stored in `token.json` and should not be exposed to the outside world.
 
-🔐 HTTPS setup is required for OAuth2 authentication
-### 📚 Request an example
+⚙️ The issued token is stored in `token.json` and **must not** be exposed to the outside world.
+
+🔐 HTTPS setup is required for OAuth2 authentication.
+
+---
+
+### 📚 Example Requests
+
 📝 Get a list of SmartThings devices:
 
-GET http://localhost:{PROT}/smartthings/devices
+```
+GET https://your-domain:{PORT}/smartthings/devices
+```
 
-📝 Get a list of SmartThings Scene:
+📝 Get a list of SmartThings scenes:
 
-GET http://localhost:{PORT}/smartthings/scenes
+```
+GET https://your-domain:{PORT}/smartthings/scenes
+```
