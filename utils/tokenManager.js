@@ -5,21 +5,28 @@ require('dotenv').config();
 const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
 
-// Token renewal logic
+// Token renewal logic (with correct curl-style request)
 async function getValidAccessToken() {
   let token = JSON.parse(fs.readFileSync('token.json', 'utf-8'));
   const now = Math.floor(Date.now() / 1000);
 
   if (now >= token.expires_at) {
     console.log('[🔄] Renewing token...');
-    const res = await axios.post('https://api.smartthings.com/v1/oauth/token', null, {
-      params: {
+    const basicAuth = Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`).toString('base64');
+    const res = await axios.post(
+      'https://api.smartthings.com/v1/oauth/token',
+      new URLSearchParams({
         grant_type: 'refresh_token',
-        client_id: CLIENT_ID,
-        client_secret: CLIENT_SECRET,
         refresh_token: token.refresh_token,
-      },
-    });
+        redirect_uri: REDIRECT_URI,
+      }).toString(),
+      {
+        headers: {
+          'Authorization': `Basic ${basicAuth}`,
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      }
+    );
 
     token = res.data;
     token.expires_at = now + token.expires_in;
@@ -30,3 +37,4 @@ async function getValidAccessToken() {
 }
 
 module.exports = { getValidAccessToken };
+
